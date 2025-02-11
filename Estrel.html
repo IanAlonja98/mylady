@@ -75,27 +75,40 @@
             color: #721c24;
             border: 2px solid #721c24;
         }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: confetti-animation 3s ease-in-out forwards;
+        }
         .confetti div {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: rgba(255, 165, 0, 0.8);
+            background-color: #ff0;
             opacity: 0;
-            animation: confetti-animation 2s infinite;
+            border-radius: 50%;
+            animation: confetti-fall 3s ease-in-out infinite;
         }
-
         @keyframes confetti-animation {
             0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(200px) rotate(180deg);
-                opacity: 1;
+                opacity: 0;
             }
             100% {
-                transform: translateY(400px) rotate(360deg);
-                opacity: 0;
+                opacity: 1;
+            }
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 1;
             }
         }
     </style>
@@ -110,4 +123,36 @@
         <p>Mon amour, tu es la personne qui rend ma vie magique. ❤️</p>
     </div>
     <div class="additional-buttons" id="additional-buttons">
-        <button onclick="
+        <button onclick="window.open('https://chatgpt.com/canvas/shared/67aba0e6a348819199be5e0d28701df0', '_blank')">Welcome Back To Houston 🤠</button>
+        <button onclick="window.open('https://open.spotify.com/playlist/3I0XubiysCP9SWiCR70JeA?si=d3a7dd24d34a4650', '_blank')">Spotify Playlist 🎶</button>
+        <button onclick="window.open('https://www.icloud.com/sharedalbum/#B2C5oqs3qrnSY3l', '_blank')">View Our Photos 📸</button>
+        <button onclick="window.open('https://docs.google.com/document/d/1lP00V9iIlfIDXWChyKLkkv3WloRlfALzcq2XPhQzr9E/edit?tab=t.0', '_blank')">Emergency Contacts 📑</button>
+    </div>
+    <script>
+        function showConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.classList.add('confetti');
+            const numberOfConfetti = 300;
+            for (let i = 0; i < numberOfConfetti; i++) {
+                const confettiPiece = document.createElement('div');
+                const randomX = (Math.random() * 2 - 1) * window.innerWidth + 'px';
+                const randomY = (Math.random() * 2 - 1) * window.innerHeight + 'px';
+                confettiPiece.style.setProperty('--x', randomX);
+                confettiPiece.style.setProperty('--y', randomY);
+                confettiPiece.style.animationDelay = `${Math.random() * 1}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+            document.body.appendChild(confettiContainer);
+            document.getElementById('romantic-message').style.display = 'block';
+            document.getElementById('additional-buttons').style.display = 'block';
+        }
+        const noButton = document.getElementById('no-button');
+        function moveNoButton() {
+            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+        setInterval(moveNoButton, 1000);
+    </script>
+</body>
+</html>
