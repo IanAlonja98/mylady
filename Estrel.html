@@ -84,17 +84,16 @@
             pointer-events: none;
             z-index: 9999;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
         }
         .confetti div {
             position: absolute;
             width: 10px;
             height: 10px;
             background-color: #ff0;
-            opacity: 0;
+            opacity: 0.7;
             border-radius: 50%;
-            animation: confetti-fall 3s ease-in-out infinite;
+            animation: confetti-fall 3s ease-in-out forwards;
         }
         @keyframes confetti-fall {
             0% {
@@ -131,11 +130,12 @@
             const numberOfConfetti = 300;
             for (let i = 0; i < numberOfConfetti; i++) {
                 const confettiPiece = document.createElement('div');
-                const randomX = (Math.random() * 2 - 1) * window.innerWidth + 'px';
-                const randomY = (Math.random() * 2 - 1) * window.innerHeight + 'px';
-                confettiPiece.style.setProperty('--x', randomX);
-                confettiPiece.style.setProperty('--y', randomY);
-                confettiPiece.style.animationDelay = `${Math.random() * 1}s`;
+                const randomX = Math.random() * 100 + 'vw';  // Random width position
+                const randomY = Math.random() * 100 + 'vh';  // Random height position
+                const rotation = Math.random() * 360 + 'deg';
+                confettiPiece.style.left = randomX;
+                confettiPiece.style.top = randomY;
+                confettiPiece.style.transform = `rotate(${rotation})`;
                 confettiContainer.appendChild(confettiPiece);
             }
             document.body.appendChild(confettiContainer);
