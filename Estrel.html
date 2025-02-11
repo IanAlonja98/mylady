@@ -75,6 +75,35 @@
             color: #721c24;
             border: 2px solid #721c24;
         }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff5733;
+            animation: confetti-fall 3s infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -109,6 +138,7 @@
             document.getElementById('romantic-message').style.display = 'block';
             document.getElementById('additional-buttons').style.display = 'block';
         }
+
         const noButton = document.getElementById('no-button');
         function moveNoButton() {
             const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
@@ -119,4 +149,3 @@
     </script>
 </body>
 </html>
-
