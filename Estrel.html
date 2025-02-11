@@ -119,6 +119,7 @@
         <button onclick="window.open('https://chatgpt.com/canvas/shared/67aba0e6a348819199be5e0d28701df0', '_blank')">Welcome Back To Houston 🤠</button>
         <button onclick="window.open('https://open.spotify.com/playlist/3I0XubiysCP9SWiCR70JeA?si=d3a7dd24d34a4650', '_blank')">Spotify Playlist 🎶</button>
         <button onclick="window.open('https://www.icloud.com/sharedalbum/#B2C5oqs3qrnSY3l', '_blank')">View Our Photos 📸</button>
+        <button onclick="window.open('https://docs.google.com/document/d/1lP00V9iIlfIDXWChyKLkkv3WloRlfALzcq2XPhQzr9E/edit?tab=t.0', '_blank')">Emergency Contacts 📑</button>
     </div>
     <script>
         function showConfetti() {
@@ -127,10 +128,10 @@
             const numberOfConfetti = 300;
             for (let i = 0; i < numberOfConfetti; i++) {
                 const confettiPiece = document.createElement('div');
-                const randomX = (Math.random() * 2 - 1) * window.innerWidth + 'px';
-                const randomY = (Math.random() * 2 - 1) * window.innerHeight + 'px';
-                confettiPiece.style.setProperty('--x', randomX);
-                confettiPiece.style.setProperty('--y', randomY);
+                const randomX = Math.random() * window.innerWidth + 'px';
+                const randomY = Math.random() * window.innerHeight + 'px';
+                confettiPiece.style.left = randomX;
+                confettiPiece.style.top = randomY;
                 confettiPiece.style.animationDelay = `${Math.random() * 1}s`;
                 confettiContainer.appendChild(confettiPiece);
             }
