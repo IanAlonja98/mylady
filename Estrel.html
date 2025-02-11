@@ -75,33 +75,27 @@
             color: #721c24;
             border: 2px solid #721c24;
         }
-
-        /* Confetti Animation */
-        .confetti {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
-        }
-
         .confetti div {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #ff5733;
-            animation: confetti-fall 3s infinite;
+            background-color: rgba(255, 165, 0, 0.8);
+            opacity: 0;
+            animation: confetti-animation 2s infinite;
         }
 
-        @keyframes confetti-fall {
+        @keyframes confetti-animation {
             0% {
-                transform: translateY(-100%) rotate(0deg);
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(200px) rotate(180deg);
+                opacity: 1;
             }
             100% {
-                transform: translateY(100vh) rotate(720deg);
+                transform: translateY(400px) rotate(360deg);
+                opacity: 0;
             }
         }
     </style>
@@ -116,37 +110,4 @@
         <p>Mon amour, tu es la personne qui rend ma vie magique. ❤️</p>
     </div>
     <div class="additional-buttons" id="additional-buttons">
-        <button onclick="window.open('https://chatgpt.com/canvas/shared/67aba0e6a348819199be5e0d28701df0', '_blank')">Welcome Back To Houston 🤠</button>
-        <button onclick="window.open('https://open.spotify.com/playlist/3I0XubiysCP9SWiCR70JeA?si=d3a7dd24d34a4650', '_blank')">Spotify Playlist 🎶</button>
-        <button onclick="window.open('https://www.icloud.com/sharedalbum/#B2C5oqs3qrnSY3l', '_blank')">View Our Photos 📸</button>
-        <button onclick="window.open('https://docs.google.com/document/d/1lP00V9iIlfIDXWChyKLkkv3WloRlfALzcq2XPhQzr9E/edit?tab=t.0', '_blank')">Emergency Contacts 📑</button>
-    </div>
-    <script>
-        function showConfetti() {
-            const confettiContainer = document.createElement('div');
-            confettiContainer.classList.add('confetti');
-            const numberOfConfetti = 300;
-            for (let i = 0; i < numberOfConfetti; i++) {
-                const confettiPiece = document.createElement('div');
-                const randomX = Math.random() * window.innerWidth + 'px';
-                const randomY = Math.random() * window.innerHeight + 'px';
-                confettiPiece.style.left = randomX;
-                confettiPiece.style.top = randomY;
-                confettiPiece.style.animationDelay = `${Math.random() * 1}s`;
-                confettiContainer.appendChild(confettiPiece);
-            }
-            document.body.appendChild(confettiContainer);
-            document.getElementById('romantic-message').style.display = 'block';
-            document.getElementById('additional-buttons').style.display = 'block';
-        }
-
-        const noButton = document.getElementById('no-button');
-        function moveNoButton() {
-            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
-        }
-        setInterval(moveNoButton, 1000);
-    </script>
-</body>
-</html>
+        <button onclick="
